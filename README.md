@@ -36,10 +36,6 @@ source("credal.R")           # → main_credal_ranking.png
 source("rhat.R")             # → R-hat / ESS summaries from stored fits
 ```
 
-To switch to the hierarchical expert-level BBWM, edit `bwm_hier.R` to point to the hierarchical Stan file variant (commented in the script). Expect ~10× longer runtime; pooled BBWM remains the default for speed and reproducibility.
-
-Downstream scripts expect pooled parameter name `alpha` (hierarchical exposes the group mean as `w_group`; the scripts handle the name internally).
-
 ---
 
 ## Research protocol ↔ repo steps (traceability)
@@ -87,14 +83,26 @@ All scripts use relative paths; staged `.rds` files allow resuming without recom
 - **CRAN**: `tidyverse`, `rstan`, `bayesplot`, `loo`, `tidybayes`, `igraph`, `tidygraph`, `ggraph`, `ggrepel`
 - **Stan toolchain** configured for `rstan` (see platform-specific setup).
 - **Parallel chains**: `options(mc.cores = parallel::detectCores())`. Tune `adapt_delta` and `max_treedepth` in scripts if you see divergent transitions or depth saturations.
-
+-  **Fuzzy VIKOR**: `FuzzyMCDM` v1.1 (archived). Install via:
+  ```r
+  if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
+  remotes::install_version("FuzzyMCDM", version = "1.1", repos = "https://cran.r-project.org")
+  # or:
+  install.packages(
+    "https://cran.r-project.org/src/contrib/Archive/FuzzyMCDM/FuzzyMCDM_1.1.tar.gz",
+    repos = NULL, type = "source"
+  )
+  library(FuzzyMCDM)
+```
+Or via Github: https://github.com/cran/FuzzyMCDM
 ---
 
 ## OSF connection and citation
-This GitHub repository is connected to the Open Science Framework via the GitHub add-on. The OSF project hosts a public copy of these materials and can be registered to mint a DOI for archival citation. Add the OSF DOI here when issued. If you archive a GitHub release on Zenodo, add that DOI here as the software citation. In manuscripts, cite the paper, the OSF dataset DOI, and the Zenodo/GitHub software DOI as appropriate.
+This GitHub repository is connected to the Open Science Framework via the GitHub add-on. The OSF project hosts a public copy of these materials and can be registered to mint a DOI for archival citation. 
 
 **Citation template**
-Author(s). Year. AI readiness in academic libraries: fuzzy Delphi, Bayesian BWM, sensitivity, and credal rankings. OSF, DOI: [OSF DOI]. Software release, DOI: [Zenodo DOI].
+Deja, M. (2025, September 9). A Multi-criteria decision model for AI implementation in academic libraries. Retrieved from osf.io/2rnkv
+
 
 ---
 
