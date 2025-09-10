@@ -12,16 +12,17 @@ This repository contains data and R code for a ten-step workflow that turns firs
 
 - `ai.csv` — raw first-round expert ratings (wide; one row per expert; columns `c1_v1 … c5_v31` and `id`).  
 - `group2.csv` — expert → institutional archetype mapping used for archetype aggregation.  
-- `fuzzy_delphi.R` — Stage 1 implementation; produces `delphi_stage.rds` and `fuzzy.csv`.  
+- `fuzzy_delphi.R` — Stage 1 implementation; produces `delphi_stage.rds`.  
 - `bwm_hier.R` — Stage 2 (pooled Bayesian BWM by default; optional hierarchical variant toggled inside); produces `bbwm_stage.rds`.  
 - `sensitivity.R` — Stage 2a stress tests main-criteria tilts; produces `sensitivity_stage.rds`.  
 - `credal.R` — Stage 2b credal dominance graphs from posterior draws; writes `main_credal_ranking.png`.  
-- `rhat.R` — quick R-hat/ESS extraction from stored Stan fits.  
+- `rhat.R` — quick R-hat/ESS extraction from stored Stan fits.
+- `fuzzy_VIKOR.R` — Stage 3; produces `vikor_stage.rds` in `results_vikor` folder.
 - `bwm_dirichlet_lognormal.stan` — pooled BBWM with Delphi-centered Dirichlet prior and lognormal ratio likelihood.  
 - `delphi_stage.rds`, `bbwm_stage.rds`, `sensitivity_stage.rds` — staged artifacts for downstream steps.  
 - `code_AI_MCDM.Rproj`, `LICENSE` (CC0), `README.md`.
 
-> Reverse coding: selected C4 items are transformed as `5 − x` before fuzzy aggregation so higher is uniformly “better”; see `fuzzy_delphi.R` for the exact columns.
+> Reverse coding: selected C4 items are transformed as `5 − x` before fuzzy aggregation so higher is uniformly “better” in case of preperdness; see `fuzzy_delphi.R` for the exact columns.
 
 ---
 
@@ -112,4 +113,13 @@ All files are released under Creative Commons CC0 1.0 Universal (public-domain d
 ---
 
 ## References (methods)
-Hashemi Petrudi et al., 2020; Hashemi Petrudi et al., 2022; Kuo & Chen, 2008; Li, Wang, & Rezaei, 2020; Murray et al., 1985; Munim et al., 2022; Opricovic, 2011; Saner et al., 2022; Wickham et al., 2019; Guo et al., 2015; Gabry et al., 2019; Vehtari et al., 2017; Kay, 2024.
+Hashemi Petrudi, S. H., Ghomi, H., & Mazaheriasad, M. (2022). An Integrated Fuzzy Delphi and Best Worst Method (BWM) for performance measurement in higher education. Decision Analytics Journal, 4, 100121. https://doi.org/10.1016/j.dajour.2022.100121
+Hashemi Petrudi, S. H., Tavana, M., & Abdi, M. (2020). A comprehensive framework for analyzing challenges in humanitarian supply chain management: A case study of the Iranian Red Crescent Society. International Journal of Disaster Risk Reduction, 42, 101340. https://doi.org/10.1016/j.ijdrr.2019.101340
+Kuo, Y.-F., & Chen, P.-C. (2008). Constructing performance appraisal indicators for mobility of the service industries using Fuzzy Delphi Method. Expert Systems with Applications, 35(4), 1930–1939. https://doi.org/10.1016/j.eswa.2007.08.068
+Li, L., Wang, X., & Rezaei, J. (2020). A Bayesian Best-Worst Method-Based Multicriteria Competence Analysis of Crowdsourcing Delivery Personnel. Complexity, 2020, 1–17. https://doi.org/10.1155/2020/4250417
+Munim, Z. H., Balasubramaniyan, S., Kouhizadeh, M., & Ullah Ibne Hossain, N. (2022). Assessing blockchain technology adoption in the Norwegian oil and gas industry using Bayesian Best Worst Method. Journal of Industrial Information Integration, 28, 100346. https://doi.org/10.1016/j.jii.2022.100346
+Murray, T. J., Pipino, L. L., & Van Gigch, J. P. (1985). A pilot study of fuzzy set modification of Delphi*. Human Systems Management, 5(1), 76–80. https://doi.org/10.3233/HSM-1985-5111
+Opricovic, S. (2011). Fuzzy VIKOR with an application to water resources planning. Expert Systems with Applications, 38(10), 12983–12990. https://doi.org/10.1016/j.eswa.2011.04.097
+Opricovic, S., & Tzeng, G.-H. (2004). Compromise solution by MCDM methods: A comparative analysis of VIKOR and TOPSIS. European Journal of Operational Research, 156(2), 445–455. https://doi.org/10.1016/S0377-2217(03)00020-1
+Saner, H. S., Yucesan, M., & Gul, M. (2022). A Bayesian BWM and VIKOR-based model for assessing hospital preparedness in the face of disasters. Natural Hazards, 111(2), 1603–1635. https://doi.org/10.1007/s11069-021-05108-7
+Talib, F., Asjad, M., Attri, R., Siddiquee, A. N., & Khan, Z. A. (2019). Ranking model of total quality management enablers in healthcare establishments using the best-worst method. The TQM Journal, 31(5), 790–814. https://doi.org/10.1108/TQM-04-2019-0118
