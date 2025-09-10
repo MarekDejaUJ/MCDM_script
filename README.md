@@ -1,4 +1,4 @@
-# MCDM_script
+# MCDM for AI readiness
 A Multi-criteria decision model for AI implementation in academic libraries
 
 # AI readiness in academic libraries
